@@ -1,0 +1,34 @@
+mport scala.io.StdIn
+
+object MinMaxProgram {
+  def main(args: Array[String]): Unit = {
+    print("Enter the size of the array: ")
+    val size = StdIn.readInt()
+    println(s"Enter $size elements:")
+    val array = Array.ofDim[Int](size)
+    for (i <- 0 until size) {
+      array(i) = StdIn.readInt()
+    }
+
+    val (min, max) = findMinMax(array)
+
+    println(s"The smallest number is: $min")
+    println(s"The largest number is: $max")
+  }
+
+  def findMinMax(array: Array[Int]): (Int, Int) = {
+    var min = Int.MaxValue
+    var max = Int.MinValue
+
+    for (num <- array) {
+      if (num < min) {
+        min = num
+      }
+      if (num > max) {
+        max = num
+      }
+    }
+
+    (min, max)
+  }
+}
